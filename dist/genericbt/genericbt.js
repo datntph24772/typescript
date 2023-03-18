@@ -1,5 +1,5 @@
-var numArray3 = [5, 13, 8, 2, 3, 1];
-var textArray3 = ["c", "a", "b", "e"];
+const numArray3 = [5, 13, 8, 2, 3, 1];
+const textArray3 = ["c", "a", "b", "e"];
 // // console.log(numArray3);
 // function selectionSort(arr) {
 //     for(let i = 0; i < arr.length - 1; i++) {
@@ -31,18 +31,18 @@ var textArray3 = ["c", "a", "b", "e"];
 // })
 // console.log(resultgeneric);
 function WE17317_Sort(arr, callback) {
-    for (var i = 0; i < arr.length - 1; i++) {
-        for (var j = i + 1; j < arr.length; j++) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
             if (callback(arr[i], arr[j]) > 0) {
                 if (arr[i] > arr[j]) {
-                    var temp = arr[i];
+                    let temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
                 }
             }
             else if (callback(arr[i], arr[j]) < 0) {
                 if (arr[i] < arr[j]) {
-                    var temp = arr[i];
+                    let temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
                 }
@@ -51,7 +51,7 @@ function WE17317_Sort(arr, callback) {
     }
     return arr;
 }
-console.log(WE17317_Sort(numArray3, function (a, b) {
+console.log(WE17317_Sort(numArray3, (a, b) => {
     if (typeof a == "number" && typeof b == "number") {
         return a - b;
     }
@@ -59,7 +59,7 @@ console.log(WE17317_Sort(numArray3, function (a, b) {
         return a.localeCompare(b);
     }
 }));
-console.log(WE17317_Sort(textArray3, function (a, b) {
+console.log(WE17317_Sort(textArray3, (a, b) => {
     if (typeof b == "number" && typeof a == "number") {
         return b - a;
     }
