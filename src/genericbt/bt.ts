@@ -1,25 +1,76 @@
-function selectionSort<T>(arr: T[], callback: ((a: T, b: T) => number)): T[] {
-  for (let i = 0; i < arr.length - 1; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (callback(arr[i], arr[j]) > 0) {
-        let temp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp
-      }
-    }
-  }
+// Generics
+const numArray = [1,2,3,5,8,13] //Fibonacci
+const numArray2 = ["Thu", "Hoàng", "Đức Anh"]
+// const result2 = numArray.map(item => item * item)
+// function we17317_map(arr: number[], callback: (item: number) => number): number[] {
+//     const temp = []
+//     for(let i = 0; i < arr.length; i++) {
+//         const newItem = callback(arr[i])
+//         temp.push(newItem)
+//     }
+//     return temp;
+// }
 
-  return arr;
+// Generic
+function showStringData(a: string): string {
+    return a
 }
 
-const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+function showNumberData(a: number): number {
+    return a
+}
 
-console.log(selectionSort(numbers, (a, b) => {
-  return b - a
-})); // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+function showData<T>(a: T): T {
+    return a
+}
 
-const strings = ["banana", "apple", "orange", "pear"];
+// showData<boolean>("string")
 
-console.log(selectionSort(strings, (a, b) => {
-  return b.localeCompare(a)
-})); // ["apple", "banana", "orange", "pear"]
+// function we17317_map<T>(arr: T[], callback: (item: T, index: number) => T): T[] {
+//     let temp = []
+//     for(let i = 0; i < arr.length; i++) {
+//         const newItem = callback(arr[i], i)
+//         temp.push(newItem)
+//     }
+//     return temp
+// }
+
+// const result2 = we17317_map(numArray2, (item, index) => {
+//     return item + "-we17317" + " " + index
+// })
+
+
+const numArray4 = [13,5,8,2,3,1] 
+const strArr4 = ["b", "c", "d", "a"]
+
+numArray4.sort((a, b) => {
+    // return a - b
+    return a - b
+})
+
+// console.log(numArray3);
+function selectionSort<T>(arr: T[], callback?: (a: T, b: T) => number) {
+    if (!callback) {
+        callback = (a: T, b: T): number => {
+            if (a > b) {
+                return 1
+            } else {
+                return -1
+            }
+        }
+    }
+    for(let i = 0; i < arr.length - 1; i++) {
+        for(let j = i + 1; j < arr.length; j++) {
+            if(callback(arr[i], arr[j]) > 0) {
+                let temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+            }
+        }
+    }
+}
+
+selectionSort(strArr4, (a, b) => {
+    return a.localeCompare(b)
+})
+console.log(strArr4);
